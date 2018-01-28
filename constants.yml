@@ -1,0 +1,2 @@
+path: 'scan.xml'
+ports: [8080]
