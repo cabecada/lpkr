@@ -1,15 +1,10 @@
 require './redis_init'
+require './scan_host'
 
-include 'RedisKeys'
 include ScanHost
 
-desc "Scan Hosts for free ports"
-
-task :scan_nmap do 
-	#get list of ips
-
-	ips = $redis.smembers("IPS_LIST")
-	ips.each do |ip|
-		scan_host(ip)
-  end
+#get list of ips
+ips = $redis.smembers("IPS_LIST")
+ips.each do |ip|
+	scan_ports_host(ip)
 end

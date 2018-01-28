@@ -1,5 +1,6 @@
 class Host
   require './redis_init'
+  require './scan_host'
   include ScanHost
   # has_many :apps
   # has_many :ports
