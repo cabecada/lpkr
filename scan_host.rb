@@ -21,7 +21,7 @@ module ScanHost
       xml.each_host do |host|
         puts "[#{host.ip}]"
 
-        host.each_port do |port|
+        host.each_open_port do |port|
           puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
           $redis.sadd("HOST_PORTS_AVAILABLE", host.ip)
           $redis.sadd(host.ip, port.number)
